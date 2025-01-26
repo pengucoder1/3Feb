@@ -311,42 +311,52 @@
         const flame = document.querySelector('.flame');
         const message = document.querySelector('.message');
 
+       
         async function setupMicrophone() {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                const audioContext = new AudioContext();
-                const analyzer = audioContext.createAnalyser();
-                const microphone = audioContext.createMediaStreamSource(stream);
-                microphone.connect(analyzer);
+    try {
+        // Request microphone access
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        console.log('Microphone access granted');
 
-                analyzer.fftSize = 256;
-                const bufferLength = analyzer.frequencyBinCount;
-                const dataArray = new Uint8Array(bufferLength);
+        // Set up audio context and analyzer
+        const audioContext = new AudioContext();
+        const analyzer = audioContext.createAnalyser();
+        const microphone = audioContext.createMediaStreamSource(stream);
+        microphone.connect(analyzer);
 
-                function checkVolume() {
-                    analyzer.getByteFrequencyData(dataArray);
-                    let sum = 0;
-                    for (let i = 0; i < bufferLength; i++) {
-                        sum += dataArray[i];
-                    }
-                    const averageVolume = sum / bufferLength;
+        analyzer.fftSize = 256;
+        const bufferLength = analyzer.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
 
-                    if (averageVolume > 50) {
-                        flame.style.display = 'none';
-                        message.style.display = 'block';
-                    }
-
-                    requestAnimationFrame(checkVolume);
-                }
-
-                checkVolume();
-            } catch (error) {
-                console.error('Error accessing microphone:', error);
+        // Function to check volume
+        function checkVolume() {
+            analyzer.getByteFrequencyData(dataArray);
+            let sum = 0;
+            for (let i = 0; i < bufferLength; i++) {
+                sum += dataArray[i];
             }
+            const averageVolume = sum / bufferLength;
+
+            // If volume is above threshold, blow out the flame
+            if (averageVolume > 50) {
+                flame.style.display = 'none';
+                message.style.display = 'block';
+            }
+
+            // Continue checking volume
+            requestAnimationFrame(checkVolume);
         }
 
-        // Start the microphone setup when Page 2 is loaded
-        document.getElementById('page2').addEventListener('DOMContentLoaded', setupMicrophone);
+        // Start checking volume
+        checkVolume();
+    } catch (error) {
+        console.error('Error accessing microphone:', error);
+        alert('Microphone access is required for this feature. Please allow access and refresh the page.');
+    }
+}
+
+// Call the function when the page loads
+window.addEventListener('load', setupMicrophone);
     </script>
 </body>
 </html>
