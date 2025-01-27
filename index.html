@@ -7,7 +7,7 @@
     <style>
         /* Common Styles */
         body {
-            background-color: #1c70fa ; /* Light orange background #FFD580*/
+            background-color: #FFD580 ; /* Light orange background*/
             margin: 0;
             padding: 0;
             display: flex;
@@ -22,7 +22,7 @@
 
         h1 {
             text-align: center;
-            margin: 50px 0;
+            margin: 68px 0;
         }
 
         .button {
@@ -359,7 +359,7 @@
                     const averageVolume = sum / bufferLength;
 
                     // If volume is above threshold, blow out the flame
-                    if (averageVolume > 95) {
+                    if (averageVolume > 85) {
                         flame.style.display = 'none';
                         message.style.display = 'block';
                     }
