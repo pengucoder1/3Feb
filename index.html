@@ -7,7 +7,7 @@
     <style>
         /* Common Styles */
         body {
-            background-color: #FFD580; /* Light orange background*/
+            background-color: #FFD580; /* Light orange background */
             margin: 0;
             padding: 0;
             display: flex;
@@ -22,8 +22,8 @@
 
         h1 {
             text-align: center;
-            margin: -20px 0 20px 0; /* Adjusted margin for mobile */
-            line-height: 1.8; /* Increased gap between lines */
+            margin: 20px 0; /* Adjusted margin for mobile */
+            line-height: 1.5; /* Improved line spacing */
             font-size: 24px; /* Larger font size for mobile */
         }
 
@@ -36,7 +36,6 @@
             font-size: 16px;
             cursor: pointer;
             margin-top: 20px;
-            align-self: flex-end; /* Align button to the right */
         }
 
         .button:hover {
@@ -50,7 +49,8 @@
             gap: 20px;
             justify-content: center;
             align-items: center;
-            position: relative; /* For button positioning */
+            width: 100%; /* Full width */
+            padding: 0 20px; /* Add padding for better spacing */
         }
 
         .image-container img {
@@ -61,13 +61,19 @@
         }
 
         .button-container {
-            width: 100%; /* Full width to align button to the right */
+            width: 100%; /* Full width */
             display: flex;
-            justify-content: flex-end; /* Align button to the right */
+            justify-content: center; /* Center button */
             margin-top: 20px; /* Space between images and button */
         }
 
         /* Page 2: Make a Wish */
+        #page2 {
+            display: none; /* Hide Page 2 initially */
+            width: 100%; /* Full width */
+            padding: 0 20px; /* Add padding for better spacing */
+        }
+
         .cake-container {
             position: relative;
             width: 100%;
@@ -78,12 +84,10 @@
         }
 
         .cake {
-            position: relative; /* Adjusted for mobile */
+            position: relative;
             width: 80%; /* Smaller cake for mobile */
+            max-width: 250px; /* Limit maximum size */
             height: auto;
-            top: 0;
-            left: 0;
-            transform: none; /* Remove transform for mobile */
         }
 
         .plate {
@@ -270,14 +274,9 @@
 
         .message {
             display: none;
-            font-size: 24px;
+            font-size: 20px; /* Smaller message text */
             margin-top: 20px;
             color: #7B020B; /* Dark red for better contrast */
-        }
-
-        /* Hide Page 2 Initially */
-        #page2 {
-            display: none;
         }
 
         /* Audio styling */
@@ -289,6 +288,7 @@
         @media (max-width: 600px) {
             h1 {
                 font-size: 20px; /* Smaller font size for smaller screens */
+                margin: 10px 0; /* Adjusted margin for mobile */
             }
 
             .button {
@@ -301,7 +301,7 @@
             }
 
             .message {
-                font-size: 20px; /* Smaller message text */
+                font-size: 18px; /* Smaller message text */
             }
         }
     </style>
