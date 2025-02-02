@@ -5,305 +5,325 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Celebration</title>
     <style>
-        /* Common Styles */
-        body {
-            background-color: #FFD580; /* Light orange background */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            color: #333; /* Darker text for better contrast */
-            text-align: center; /* Center all text */
-        }
+       /* Common Styles */
+body {
+    background-color: #FFD580; /* Light orange background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: #333; /* Darker text for better contrast */
+    text-align: center; /* Center all text */
+}
 
-        h1 {
-            text-align: center;
-            margin: 20px 0; /* Adjusted margin for mobile */
-            line-height: 1.5; /* Improved line spacing */
-            font-size: 24px; /* Larger font size for mobile */
-        }
+h1 {
+    text-align: center;
+    margin: 20px 0; /* Adjusted margin for mobile */
+    line-height: 1.5; /* Improved line spacing */
+    font-size: 24px; /* Larger font size for mobile */
+}
 
-        .button {
-            background-color: #7B020B;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
+.button {
+    background-color: #7B020B;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
 
-        .button:hover {
-            background-color: #8a0a13;
-        }
+.button:hover {
+    background-color: #8a0a13;
+}
 
-        /* Page 1: Image Display */
-        .image-container {
-            display: flex;
-            flex-direction: column; /* Stack images vertically on mobile */
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            width: 100%; /* Full width */
-            padding: 0 20px; /* Add padding for better spacing */
-        }
+/* Page 1: Image Display */
+.image-container {
+    display: flex;
+    flex-direction: column; /* Stack images vertically on mobile */
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full width */
+    padding: 0 20px; /* Add padding for better spacing */
+}
 
-        .image-container img {
-            max-width: 100%; /* Ensure images scale down */
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
+.image-container img {
+    max-width: 100%; /* Ensure images scale down */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
 
-        .button-container {
-            width: 100%; /* Full width */
-            display: flex;
-            justify-content: center; /* Center button */
-            margin-top: 20px; /* Space between images and button */
-        }
+.button-container {
+    width: 100%; /* Full width */
+    display: flex;
+    justify-content: center; /* Center button */
+    margin-top: 20px; /* Space between images and button */
+}
 
-        /* Page 2: Make a Wish */
-        #page2 {
-            display: none; /* Hide Page 2 initially */
-            width: 100%; /* Full width */
-            padding: 0 20px; /* Add padding for better spacing */
-        }
+/* Page 2: Make a Wish */
+#page2 {
+    display: none; /* Hide Page 2 initially */
+    width: 100%; /* Full width */
+    padding: 0 20px; /* Add padding for better spacing */
+}
 
-        .cake-container {
-            position: relative;
-            width: 100%;
-            height: auto; /* Adjust height for mobile */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.cake-container {
+    position: relative;
+    width: 100%;
+    height: auto; /* Adjust height for mobile */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .cake {
-            position: relative;
-            width: 80%; /* Smaller cake for mobile */
-            max-width: 250px; /* Limit maximum size */
-            height: auto;
-        }
+.cake {
+    position: relative;
+    width: 80%; /* Smaller cake for mobile */
+    max-width: 250px; /* Limit maximum size */
+    height: auto;
+}
 
-        .plate {
-            width: 100%; /* Adjust plate size */
-            height: 110px;
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            background-color: #ccc;
-            border-radius: 50%;
-            box-shadow:
-                0 2px 0 #b3b3b3,
-                0 4px 0 #b3b3b3,
-                0 5px 40px rgba(0, 0, 0, 0.5);
-        }
+.plate {
+    width: 100%; /* Adjust plate size */
+    height: 110px;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    background-color: #ccc;
+    border-radius: 50%;
+    box-shadow:
+        0 2px 0 #b3b3b3,
+        0 4px 0 #b3b3b3,
+        0 5px 40px rgba(0, 0, 0, 0.5);
+}
 
-        .cake > * {
-            position: absolute;
-        }
+.cake > * {
+    position: absolute;
+}
 
-        .layer {
-            position: absolute;
-            display: block;
-            width: 100%; /* Adjust layer size */
-            height: 100px;
-            border-radius: 50%;
-            background-color: #553c13;
-            box-shadow:
-                0 2px 0 #5e4324,
-                0 4px 0 #4a3410,
-                0 6px 0 #49330f,
-                0 8px 0 #48320e,
-                0 10px 0 #47310d,
-                0 12px 0 #46300c,
-                0 14px 0 #452f0b,
-                0 16px 0 #442e0a,
-                0 18px 0 #432d09,
-                0 20px 0 #422c08,
-                0 22px 0 #412b07,
-                0 24px 0 #402a06,
-                0 26px 0 #3f2905,
-                0 28px 0 #3e2804,
-                0 30px 0 #3d2703;
-        }
+.layer {
+    position: absolute;
+    display: block;
+    width: 100%; /* Adjust layer size */
+    height: 100px;
+    border-radius: 50%;
+    background-color: #553c13;
+    box-shadow:
+        0 2px 0 #5e4324,
+        0 4px 0 #4a3410,
+        0 6px 0 #49330f,
+        0 8px 0 #48320e,
+        0 10px 0 #47310d,
+        0 12px 0 #46300c,
+        0 14px 0 #452f0b,
+        0 16px 0 #442e0a,
+        0 18px 0 #432d09,
+        0 20px 0 #422c08,
+        0 22px 0 #412b07,
+        0 24px 0 #402a06,
+        0 26px 0 #3f2905,
+        0 28px 0 #3e2804,
+        0 30px 0 #3d2703;
+}
 
-        .layer-top { top: 0px; }
-        .layer-middle { top: 33px; }
-        .layer-bottom { top: 66px; }
+.layer-top { top: 0px; }
+.layer-middle { top: 33px; }
+.layer-bottom { top: 66px; }
 
-        .icing {
-            top: 2px;
-            left: 5px;
-            background-color: #f0e4d0;
-            width: 95%; /* Adjust icing size */
-            height: 90px;
-            border-radius: 50%;
-        }
+.icing {
+    top: 2px;
+    left: 5px;
+    background-color: #f0e4d0;
+    width: 95%; /* Adjust icing size */
+    height: 90px;
+    border-radius: 50%;
+}
 
-        .icing:before {
-            content: "";
-            position: absolute;
-            top: 4px;
-            right: 5px;
-            bottom: 6px;
-            left: 5px;
-            background-color: #f3e8d6;
-            box-shadow:
-                0 0 4px #f5ecdc,
-                0 0 4px #f5ecdc,
-                0 0 4px #f5ecdc;
-            border-radius: 50%;
-            z-index: 1;
-        }
+.icing:before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    bottom: 6px;
+    left: 5px;
+    background-color: #f3e8d6;
+    box-shadow:
+        0 0 4px #f5ecdc,
+        0 0 4px #f5ecdc,
+        0 0 4px #f5ecdc;
+    border-radius: 50%;
+    z-index: 1;
+}
 
-        .drip {
-            display: block;
-            width: 50px;
-            height: 60px;
-            border-bottom-left-radius: 25px;
-            border-bottom-right-radius: 25px;
-            background-color: #f0e4d0;
-        }
+.drip {
+    display: block;
+    width: 50px;
+    height: 60px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #f0e4d0;
+}
 
-        .drip1 {
-            top: 53px;
-            left: 5px;
-            transform: skewY(15deg);
-            height: 48px;
-            width: 40px;
-        }
+.drip1 {
+    top: 53px;
+    left: 5px;
+    transform: skewY(15deg);
+    height: 48px;
+    width: 40px;
+}
 
-        .drip2 {
-            top: 69px;
-            left: 181px;
-            transform: skewY(-15deg);
-        }
+.drip2 {
+    top: 69px;
+    left: 181px;
+    transform: skewY(-15deg);
+}
 
-        .drip3 {
-            top: 54px;
-            left: 90px;
-            width: 80px;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-        }
+.drip3 {
+    top: 54px;
+    left: 90px;
+    width: 80px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
 
-        .candle {
-            background-color: #7B020B;
-            width: 16px;
-            height: 50px;
-            border-radius: 8px / 4px;
-            top: -20px;
-            left: 50%;
-            margin-left: -8px;
-            z-index: 10;
-        }
+.candle {
+    background-color: #7B020B;
+    width: 16px;
+    height: 50px;
+    border-radius: 8px / 4px;
+    top: -20px;
+    left: 50%;
+    margin-left: -8px;
+    z-index: 10;
+}
 
-        .candle:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 16px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: #8a0a13;
-        }
+.candle:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #8a0a13;
+}
 
-        .flame {
-            position: absolute;
-            background-color: orange;
-            width: 15px;
-            height: 35px;
-            border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px;
-            top: -34px;
-            left: 50%;
-            margin-left: -7.5px;
-            z-index: 10;
-            box-shadow:
-                0 0 10px rgba(255, 165, 0, 0.5),
-                0 0 20px rgba(255, 165, 0, 0.5),
-                0 0 60px rgba(255, 165, 0, 0.5),
-                0 0 80px rgba(255, 165, 0, 0.5);
-            transform-origin: 50% 90%;
-            animation: flicker 1s ease-in-out alternate infinite;
-        }
+.flame {
+    position: absolute;
+    background-color: orange;
+    width: 15px;
+    height: 35px;
+    border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px;
+    top: -34px;
+    left: 50%;
+    margin-left: -7.5px;
+    z-index: 10;
+    box-shadow:
+        0 0 10px rgba(255, 165, 0, 0.5),
+        0 0 20px rgba(255, 165, 0, 0.5),
+        0 0 60px rgba(255, 165, 0, 0.5),
+        0 0 80px rgba(255, 165, 0, 0.5);
+    transform-origin: 50% 90%;
+    animation: flicker 1s ease-in-out alternate infinite;
+}
 
-        @keyframes flicker {
-            0% {
-                transform: skewX(5deg);
-                box-shadow: 
-                    0 0 10px rgba(255, 165, 0, 0.2),
-                    0 0 20px rgba(255, 165, 0, 0.2),
-                    0 0 60px rgba(255, 165, 0, 0.2),
-                    0 0 80px rgba(255, 165, 0, 0.2); }
-            25% {
-                transform: skewX(-5deg);
-                box-shadow:
-                    0 0 10px rgba(255, 165, 0, 0.5),
-                    0 0 20px rgba(255, 165, 0, 0.5),
-                    0 0 60px rgba(255, 165, 0, 0.5),
-                    0 0 80px rgba(255, 165, 0, 0.5); }
-            50% {
-                transform: skewX(10deg);
-                box-shadow:
-                    0 0 10px rgba(255, 165, 0, 0.3),
-                    0 0 20px rgba(255, 165, 0, 0.3),
-                    0 0 60px rgba(255, 165, 0, 0.3),
-                    0 0 80px rgba(255, 165, 0, 0.3); }
-            75% {
-                transform: skewX(-10deg);
-                box-shadow:
-                    0 0 10px rgba(255, 165, 0, 0.4),
-                    0 0 20px rgba(255, 165, 0, 0.4),
-                    0 0 60px rgba(255, 165, 0, 0.4),
-                    0 0 80px rgba(255, 165, 0, 0.4); }
-            100% {
-                transform: skewX(5deg);
-                box-shadow:
-                    0 0 10px rgba(255, 165, 0, 0.5),
-                    0 0 20px rgba(255, 165, 0, 0.5),
-                    0 0 60px rgba(255, 165, 0, 0.5),
-                    0 0 80px rgba(255, 165, 0, 0.5); }
-        }
+@keyframes flicker {
+    0% {
+        transform: skewX(5deg);
+        box-shadow: 
+            0 0 10px rgba(255, 165, 0, 0.2),
+            0 0 20px rgba(255, 165, 0, 0.2),
+            0 0 60px rgba(255, 165, 0, 0.2),
+            0 0 80px rgba(255, 165, 0, 0.2); }
+    25% {
+        transform: skewX(-5deg);
+        box-shadow:
+            0 0 10px rgba(255, 165, 0, 0.5),
+            0 0 20px rgba(255, 165, 0, 0.5),
+            0 0 60px rgba(255, 165, 0, 0.5),
+            0 0 80px rgba(255, 165, 0, 0.5); }
+    50% {
+        transform: skewX(10deg);
+        box-shadow:
+            0 0 10px rgba(255, 165, 0, 0.3),
+            0 0 20px rgba(255, 165, 0, 0.3),
+            0 0 60px rgba(255, 165, 0, 0.3),
+            0 0 80px rgba(255, 165, 0, 0.3); }
+    75% {
+        transform: skewX(-10deg);
+        box-shadow:
+            0 0 10px rgba(255, 165, 0, 0.4),
+            0 0 20px rgba(255, 165, 0, 0.4),
+            0 0 60px rgba(255, 165, 0, 0.4),
+            0 0 80px rgba(255, 165, 0, 0.4); }
+    100% {
+        transform: skewX(5deg);
+        box-shadow:
+            0 0 10px rgba(255, 165, 0, 0.5),
+            0 0 20px rgba(255, 165, 0, 0.5),
+            0 0 60px rgba(255, 165, 0, 0.5),
+            0 0 80px rgba(255, 165, 0, 0.5); }
+}
 
-        .message {
-            display: none;
-            font-size: 20px; /* Smaller message text */
-            margin-top: 20px;
-            color: #7B020B; /* Dark red for better contrast */
-        }
+.message {
+    display: none;
+    font-size: 20px; /* Smaller message text */
+    margin-top: 20px;
+    color: #7B020B; /* Dark red for better contrast */
+}
 
-        /* Audio styling */
-        audio {
-            display: none; /* Hide the audio element */
-        }
+/* Audio styling */
+audio {
+    display: none; /* Hide the audio element */
+}
 
-        /* Media Queries for Mobile */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 20px; /* Smaller font size for smaller screens */
-                margin: 10px 0; /* Adjusted margin for mobile */
-            }
+/* Media Queries for Mobile */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 20px; /* Smaller font size for smaller screens */
+        margin: 10px 0; /* Adjusted margin for mobile */
+    }
 
-            .button {
-                font-size: 14px; /* Smaller button text */
-                padding: 8px 16px; /* Smaller button padding */
-            }
+    .button {
+        font-size: 14px; /* Smaller button text */
+        padding: 8px 16px; /* Smaller button padding */
+    }
 
-            .cake {
-                width: 90%; /* Larger cake for smaller screens */
-            }
+    .cake {
+        width: 90%; /* Larger cake for smaller screens */
+    }
 
-            .message {
-                font-size: 18px; /* Smaller message text */
-            }
-        }
+    .message {
+        font-size: 18px; /* Smaller message text */
+    }
+}
+
+/* Media Queries for Laptops and larger screens */
+@media (min-width: 601px) {
+    h1 {
+        font-size: 32px; /* Larger font size for laptops */
+    }
+
+    .image-container {
+        flex-direction: row; /* Display images side by side on larger screens */
+        gap: 40px; /* Increase gap between images */
+    }
+
+    .image-container img {
+        max-width: 300px; /* Limit image size on larger screens */
+    }
+
+    .cake {
+        max-width: 300px; /* Larger cake for larger screens */
+    }
+}
     </style>
 </head>
 <body>
